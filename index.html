@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Star Wars</title>
-    <link rel="shortcut icon" href="./img/icono-starwars.png" type="image/x-icon">
+    <link rel="shortcut icon" href="" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/estilos.css">
 </head>
@@ -42,3 +42,31 @@
             </div>
         </nav>
     </header>
+    <main>
+        <div id="inicio" class="overlay d-flex align-items-center" id="top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 d-flex flex-column justify-content-center">
+                        <h1 class="display-4 fw-bold mb-4">Explora el universo de Star Wars</h1>
+                        <p class="lead mb-3">Busca personajes, planetas, naves y más con la API oficial.</p>
+                        <div class="input-group mb-3">
+                            <select id="searchCategory" class="form-select">
+                                <option value="people">Personajes</option>
+                                <option value="planets">Planetas</option>
+                                <option value="species">Especies</option>
+                                <option value="starships">Naves</option>
+                                <option value="vehicles">Vehículos</option>
+                            </select>
+                            <input type="text" id="searchInput" class="form-control" placeholder="Buscar...">
+                            <button id="searchBtn" class="btn btn-warning">Buscar</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6" id="results">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
