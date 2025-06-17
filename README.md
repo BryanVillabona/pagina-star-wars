@@ -150,7 +150,6 @@ async function getNameFromUrl(url) {
 - **Lazy Loading**: Carga diferida de imágenes para mejor rendimiento
 - **Error Handling**: Manejo robusto de errores de la API
 - **Responsive Design**: Adaptación perfecta a diferentes tamaños de pantalla
-- **Progressive Enhancement**: Funcionalidad básica sin JavaScript
 
 ### Próximas Mejoras
 - [ ] Implementar sistema de favoritos
