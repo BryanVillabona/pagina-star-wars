@@ -11,7 +11,17 @@ async function getNameFromUrl(url) {
 async function enrichPerson(item) {
   const species = item.species.length ? await getNameFromUrl(item.species[0]) : 'Desconocida';
   const homeworld = await getNameFromUrl(item.homeworld);
-  return { ...item, speciesName: species, homeworldName: homeworld };
+
+  const films = item.films.length
+    ? (await Promise.all(item.films.slice(0, 3).map(getNameFromUrl))).join(', ')
+    : 'Sin películas';
+
+  return {
+    ...item,
+    speciesName: species,
+    homeworldName: homeworld,
+    filmsTitle: films
+  };
 }
 
 async function enrichPlanet(item) {
@@ -75,23 +85,23 @@ document.getElementById('searchBtn').addEventListener('click', async () => {
       case "people":
         enriched = await Promise.all(data.results.map(enrichPerson));
         resultsDiv.innerHTML = enriched.map(item => `
-          <div class="card-info">
-            <div class="card-header"><h3>${item.name}</h3></div>
-            <div class="card-body">
-              <p class="card-text">
-                <strong>Altura:</strong> ${item.height} cm<br>
-                <strong>Peso:</strong> ${item.mass} kg<br>
-                <strong>Género:</strong> ${item.gender}<br>
-                <strong>Año de nacimiento:</strong> ${item.birth_year}<br>
-                <strong>Color de cabello:</strong> ${item.hair_color}<br>
-                <strong>Color de piel:</strong> ${item.skin_color}<br>
-                <strong>Color de ojos:</strong> ${item.eye_color}<br>
-                <strong>Especie:</strong> ${item.speciesName}<br>
-                <strong>Peliculas:</strong> ${item.filmstitle}<br>
-                <strong>Planeta de origen:</strong> ${item.homeworldName}
-              </p>
-            </div>
-          </div>`).join('');
+    <div class="card-info">
+      <div class="card-header"><h3>${item.name}</h3></div>
+      <div class="card-body">
+        <p class="card-text">
+          <strong>Altura:</strong> ${item.height} cm<br>
+          <strong>Peso:</strong> ${item.mass} kg<br>
+          <strong>Género:</strong> ${item.gender}<br>
+          <strong>Año de nacimiento:</strong> ${item.birth_year}<br>
+          <strong>Color de cabello:</strong> ${item.hair_color}<br>
+          <strong>Color de piel:</strong> ${item.skin_color}<br>
+          <strong>Color de ojos:</strong> ${item.eye_color}<br>
+          <strong>Especie:</strong> ${item.speciesName}<br>
+          <strong>Películas:</strong> ${item.filmsTitle}<br>
+          <strong>Planeta de origen:</strong> ${item.homeworldName}
+        </p>
+      </div>
+    </div>`).join('');
         break;
 
       case "planets":
