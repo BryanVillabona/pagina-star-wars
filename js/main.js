@@ -284,3 +284,29 @@ const resources = {
       </div>`
   }
 };
+
+async function loadResource(type) {
+  const contentDiv = document.getElementById(`${type}Content`);
+  contentDiv.innerHTML = `<p>Cargando...</p>`;
+  try {
+    const res = await fetch(`${API_BASE}${resources[type].url}`);
+    const data = await res.json();
+    const html = data.results.slice(0, 6).map((item, i) => resources[type].render(item, i)).join('');
+    contentDiv.innerHTML = html;
+  } catch (err) {
+    contentDiv.innerHTML = `<p class="text-danger">Error al cargar ${type}.</p>`;
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  Object.keys(resources).forEach(type => loadResource(type));
+});
+
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav.navbar');
+  if (window.scrollY > 30) {
+    nav.classList.add('navbar-scroll');
+  } else {
+    nav.classList.remove('navbar-scroll');
+  }
+});
