@@ -214,3 +214,73 @@ async function cargarPeliculas() {
 }
 
 window.addEventListener('DOMContentLoaded', cargarPeliculas);
+
+const API_BASE = "https://swapi.py4e.com/api/";
+
+const resources = {
+  people: {
+    url: "people",
+    render: (item, index) => `
+      <div class="col-md-4 col-lg-2">
+        <div class="card-sw">
+          <img src="img/people${index + 1}.png" alt="${item.name}">
+          <div class="p-2">
+            <h6 class="fw-bold">${item.name}</h6>
+            <small>Altura: ${item.height} cm<br>Género: ${item.gender}</small>
+          </div>
+        </div>
+      </div>`
+  },
+  planets: {
+    url: "planets",
+    render: (item, index) => `
+      <div class="col-md-4 col-lg-2">
+        <div class="card-sw">
+          <img src="img/planet${index + 1}.png" alt="${item.name}">
+          <div class="p-2">
+            <h6 class="fw-bold">${item.name}</h6>
+            <small>Clima: ${item.climate}<br>Población: ${item.population}</small>
+          </div>
+        </div>
+      </div>`
+  },
+  species: {
+    url: "species",
+    render: (item, index) => `
+      <div class="col-md-4 col-lg-2">
+        <div class="card-sw">
+          <img src="img/species${index + 1}.png" alt="${item.name}">
+          <div class="p-2">
+            <h6 class="fw-bold">${item.name}</h6>
+            <small>Clasificación: ${item.classification}<br>Lengua: ${item.language}</small>
+          </div>
+        </div>
+      </div>`
+  },
+  starships: {
+    url: "starships",
+    render: (item, index) => `
+      <div class="col-md-4 col-lg-2">
+        <div class="card-sw">
+          <img src="img/starship${index + 1}.png" alt="${item.name}">
+          <div class="p-2">
+            <h6 class="fw-bold">${item.name}</h6>
+            <small>Modelo: ${item.model}<br>Pasajeros: ${item.passengers}</small>
+          </div>
+        </div>
+      </div>`
+  },
+  vehicles: {
+    url: "vehicles",
+    render: (item, index) => `
+      <div class="col-md-4 col-lg-2">
+        <div class="card-sw">
+          <img src="img/vehicle${index + 1}.png" alt="${item.name}">
+          <div class="p-2">
+            <h6 class="fw-bold">${item.name}</h6>
+            <small>Modelo: ${item.model}<br>Velocidad: ${item.max_atmosphering_speed}</small>
+          </div>
+        </div>
+      </div>`
+  }
+};
