@@ -1,6 +1,8 @@
-# Star Wars Finder
+# Star Wars
 
 Una aplicación web interactiva que permite explorar el vasto universo de Star Wars utilizando la API oficial de SWAPI. Descubre personajes, planetas, especies, naves espaciales y vehículos de la saga más icónica del cine.
+
+Para visualizar la página da click [aquí](https://bryanvillabona.github.io/pagina-star-wars/)
 
 ## Tabla de Contenidos
 
