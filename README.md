@@ -138,11 +138,9 @@ async function getNameFromUrl(url) {
 ## Capturas de Pantalla
 
 ### Diseño en Figma
-![Diseño Figma - Pantalla Principal](./img/maquetacion.png)
-![Diseño Figma - Pantalla de Login](./img/inicio-sesion.png)
-![Diseño Figma - Pantalla de Registro](./img/registro.png)
+![Diseño Figma - Pantalla Principal](./img/pag-star-wars.png)
 
-**🔗 Link de Figma**: [Ver diseño completo en Figma](https://www.figma.com/design/MwebXFugFeIHOr684IhRk2/Maquetaci%C3%B3n-Sportinfo?m=auto&t=MlAfksHTgrQmaoLv-7)
+**🔗 Link de Figma**: [Ver diseño completo en Figma](https://www.figma.com/proto/0MxSGhg3AAXQq9X36r6SuX/maquetacion-star-wars?node-id=0-1&t=idciZ2pL8gxZgEri-1)
 
 ---
 
