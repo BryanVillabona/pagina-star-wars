@@ -175,3 +175,42 @@ document.getElementById('searchBtn').addEventListener('click', async () => {
     resultsDiv.innerHTML = '<p class="text-danger">Error al buscar datos.</p>';
   }
 });
+
+async function cargarPeliculas() {
+  try {
+    const res = await fetch('https://swapi.py4e.com/api/films/');
+    const data = await res.json();
+
+    const filmsContainer = document.getElementById('filmsSection');
+    const filmImages = {
+      1: './img/episodio1.png',
+      2: './img/episodio2.png',
+      3: './img/episodio3.png',
+      4: './img/episodio4.png',
+      5: './img/episodio5.png',
+      6: './img/episodio6.png',
+      7: './img/episodio7.png',
+    };
+
+    filmsContainer.innerHTML = data.results
+      .sort((a, b) => a.episode_id - b.episode_id) // Orden por episodio
+      .map(film => {
+        const imgSrc = filmImages[film.episode_id] || 'img/default.png';
+        return `
+  <div class="card-film">
+    <img src="${imgSrc}" alt="${film.title}" class="film-image">
+    <div class="film-info">
+      <strong>${film.title}</strong><br>
+      Episodio ${film.episode_id}<br>
+      ${film.release_date}
+    </div>
+  </div>
+`;
+
+      }).join('');
+  } catch (error) {
+    console.error('Error cargando películas:', error);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', cargarPeliculas);
